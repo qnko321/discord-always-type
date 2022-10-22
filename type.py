@@ -1,12 +1,12 @@
 from time import sleep
 import requests
 from os.path import exists
-
+from boto.s3.connection import S3Connection
 
 def token_file_create():
 	token = ''
 	while token == '':
-		token = input("Enter your token: ")
+		token = os.environ['token']
 		with open("token", "w") as f:
 			f.write(token)
 	return token
